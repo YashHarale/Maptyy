@@ -151,7 +151,7 @@ class App {
     let workout;
 
     // If workout is running, create running object
-    if (type === 'running') {
+    if (type  === 'running') {
       const cadence = +inputCadence.value;
 
       // Check if data is valid
@@ -297,4 +297,16 @@ class App {
 }
 
 const app = new App();
+
+// Additional Feature Ideas: Challenges
+// 1. Ability to edit a workout.                               🤜
+// 2. Ability to delete a workout.                             🤜  
+// 6. More realistic error and confirmation messages;          🤜
+// 7. Ability to position the map to show all workouts (hard)  🤜
+// 9. Geocode location from coordinates('Run in Faro, Portugal') (only after asyn js section ) 🤜
+// 10. Display weather data for workout time and place (only afte asyn js section) 🤜
+
+// Add backend to this app using node.js, express.js and add all data into mongodb database.
+// Use all the information for backend development from node.js course
+
 
