@@ -227,10 +227,10 @@ a:visited {
   margin: 12px; 
 }
 .para {
-  margin-right: 85%;
+  margin-right: 86%;
   position: absolute;
   margin-bottom: 10px;  
-  font-size: 6px;
+  font-size: 8px;
 }
 
 .para.hidden {

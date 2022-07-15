@@ -84,12 +84,12 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
-    deleteIcon.addEventListener('click', this.deleteAllWorkouts);
+    deleteIcon.addEventListener('click', this._deleteAllWorkouts.bind(this));
   }
 
   _getPosition() {
-    if (navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(
+    if (navigator.geolocation) 
+     navigator.geolocation.getCurrentPosition(
         this._loadMap.bind(this),
         function () {
           alert('Could not get your position');
@@ -117,6 +117,12 @@ class App {
 
     // Render the marker
     this.#workouts.forEach(work => { this._renderWorkoutMarker(work) })
+
+    // Challenge part --- 
+    // Delete Icon mouseover
+    deleteIcon.addEventListener('mouseover', () => para.classList.remove('hidden'));
+    deleteIcon.addEventListener('mouseout', () => para.classList.add('hidden'));
+
   }
 
   _showForm(mapE) {
@@ -140,8 +146,7 @@ class App {
   }
 
   _newWorkout(e) {
-    const validInputs = (...inputs) =>
-    inputs.every(inp => Number.isFinite(inp));
+    const validInputs = (...inputs) => inputs.every(inp => Number.isFinite(inp));
     const allPositive = (...inputs) => inputs.every(inp => inp > 0);
 
     e.preventDefault();
@@ -159,11 +164,8 @@ class App {
       const cadence = +inputCadence.value;
 
       // Check if data is valid
-      if (
-        !validInputs(distance, duration, cadence) ||
-        !allPositive(distance, duration, cadence)
-      )
-        return alert('Input have to be positive numbers!');
+      if ( !validInputs(distance, duration, cadence) || !allPositive(distance, duration, cadence) )
+      return alert('Input have to be positive numbers!');
 
       workout = new Running([lat, lng], distance, duration, cadence);
     }
@@ -172,11 +174,8 @@ class App {
     if (type === 'cycling') {
       const elevation = +inputElevation.value;
 
-      if (
-        !validInputs(distance, duration, elevation) ||
-        !allPositive(distance, duration)
-      )
-        return alert('Input have to be positive numbers!');
+      if (!validInputs(distance, duration, elevation) || !allPositive(distance, duration))
+      return alert('Input have to be positive numbers!');
 
       workout = new Cycling([lat, lng], distance, duration, elevation);
     }
@@ -195,6 +194,7 @@ class App {
 
     // Set local storage to all workouts;
     this._setLocalStorage();
+
   }
 
   _renderWorkoutMarker(workout) {
@@ -294,18 +294,15 @@ class App {
     });
   }
 
-  deleteAllWorkouts (work) {
+  _deleteAllWorkouts () {
+    const data = JSON.parse(localStorage.getItem('workouts'));
 
-    if(work) {
-      const confirmation = confirm('This will delete all data permenently!')
-      if(!confirmation) return ;
-      localStorage.removeItem('workouts');
-      location.reload();
-    }
-    else {
-      prompt('Do some workout you asshole!')
-    }
-    
+    if(!data) return;
+
+    const confirmation = confirm('This will delete all workout data permenently!')
+    if(!confirmation) return ;
+    localStorage.removeItem('workouts');
+    location.reload();
   }
 }
 
@@ -313,16 +310,15 @@ const app = new App();
 
 // Additional Feature Ideas: Challenges
 // 2. Ability to edit a workout.                               🤜
-// 1. Ability to delete all workouts.                             🤜  
+// 1. Ability to delete all workouts.                          🤜  ✔ 
 // 6. More realistic error and confirmation messages;          🤜
 // 7. Ability to position the map to show all workouts (hard)  🤜
 // 9. Geocode location from coordinates('Run in Faro, Portugal') (only after asyn js section ) 🤜
 // 10. Display weather data for workout time and place (only afte asyn js section) 🤜
 
-// Add backend to this app using node.js, express.js and add all data into mongodb database.
+// Add backend to this app using node.js, express.js and add all data into mongodb database(if possible).
 // Use all the information for backend development from node.js course
 
-deleteIcon.addEventListener('mouseover', () => para.classList.remove('hidden'));
-deleteIcon.addEventListener('mouseout', () => para.classList.add('hidden'));
+
 
 
