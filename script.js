@@ -64,6 +64,9 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+const para = document.querySelector('.para')
+const deleteIcon = document.querySelector('.del');
+
 class App {
   #map;
   #mapZoomLevel = 13;
@@ -81,6 +84,7 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+    deleteIcon.addEventListener('click', this.deleteAllWorkouts);
   }
 
   _getPosition() {
@@ -290,17 +294,26 @@ class App {
     });
   }
 
-  reset () {
-    localStorage.removeItem('workouts');
-    location.reload();
+  deleteAllWorkouts (work) {
+
+    if(work) {
+      const confirmation = confirm('This will delete all data permenently!')
+      if(!confirmation) return ;
+      localStorage.removeItem('workouts');
+      location.reload();
+    }
+    else {
+      prompt('Do some workout you asshole!')
+    }
+    
   }
 }
 
 const app = new App();
 
 // Additional Feature Ideas: Challenges
-// 1. Ability to edit a workout.                               🤜
-// 2. Ability to delete a workout.                             🤜  
+// 2. Ability to edit a workout.                               🤜
+// 1. Ability to delete all workouts.                             🤜  
 // 6. More realistic error and confirmation messages;          🤜
 // 7. Ability to position the map to show all workouts (hard)  🤜
 // 9. Geocode location from coordinates('Run in Faro, Portugal') (only after asyn js section ) 🤜
@@ -308,5 +321,8 @@ const app = new App();
 
 // Add backend to this app using node.js, express.js and add all data into mongodb database.
 // Use all the information for backend development from node.js course
+
+deleteIcon.addEventListener('mouseover', () => para.classList.remove('hidden'));
+deleteIcon.addEventListener('mouseout', () => para.classList.add('hidden'));
 
 
