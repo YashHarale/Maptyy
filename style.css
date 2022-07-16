@@ -249,3 +249,63 @@ a:visited {
   cursor:zoom-in;
   font-size: 6px;
 }
+ 
+  
+/* For mobile devices */
+@media screen and (max-width: 420px) {
+  html {
+    font-size: 43%;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    color: var(--color-light--2);
+    font-weight: 400;
+    line-height: 1.6;
+    height: 100vh;
+    overscroll-behavior-y: none;
+  
+    background-color: #fff;
+    padding: 2.5rem;
+  
+    display:inline-block;
+  }
+
+  .sidebar{
+    flex-basis: 50rem;
+    width: fit-content;
+    height: 40%;
+    background-color: var(--color-dark--1);
+    padding: 3rem 5rem 4rem 5rem;
+    display: flex;
+    flex-direction:column;
+  }
+
+  .del {
+    width: 12px;
+    margin-left: 270px;
+    margin-top: 24px;
+  }
+
+  .copyright {
+    margin-top: 16px;
+    font-size: 1.3rem;
+    text-align: center;
+    color: var(--color-light--1);
+  }
+
+  #map {
+    position: absolute;
+    /* height: 50%; */
+    background-color: var(--color-light--1);
+  }
+
+  .logo {
+    height: 4.2rem;
+    align-self: center;
+    margin-bottom: 4rem;
+  }
+
+}
+  

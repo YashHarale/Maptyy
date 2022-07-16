@@ -325,9 +325,9 @@ const app = new App();
 // @. Ability to edit a workout.                               🤜  it is grunts 🤦‍♂️
 // @. Ability to delete all workouts.                          🤜  ✔ 
 // @. More realistic error and confirmation messages;          🤜  ✔
-// @. Ability to position the map to show all workouts (hard)  🤜
 // @. Geocode location from coordinates('Run in Faro, Portugal') (only after asyn js section ) 🤜
-// @. Display weather data for workout time and place (only afte asyn js section) 🤜
+// @. Display weather data for workout time and place (only after asyn js section) 🤜
+// @. Make website responsive
 
 // Add backend to this app using node.js, express.js and add all data into mongodb database(if possible).
 // Use all the information for backend development from node.js course
