@@ -66,6 +66,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 const para = document.querySelector('.para')
 const deleteIcon = document.querySelector('.del');
+const editWorkout = document.querySelector('.edit');
 
 class App {
   #map;
@@ -85,6 +86,7 @@ class App {
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
     deleteIcon.addEventListener('click', this._deleteAllWorkouts.bind(this));
+    // editWorkout.addEventListener('click', this._editWorkout);
   }
 
   _getPosition() {
@@ -147,6 +149,7 @@ class App {
 
   _newWorkout(e) {
     const validInputs = (...inputs) => inputs.every(inp => Number.isFinite(inp));
+    const InputPresent = (...inputs) => inputs.every(inp => inp)
     const allPositive = (...inputs) => inputs.every(inp => inp > 0);
 
     e.preventDefault();
@@ -164,15 +167,21 @@ class App {
       const cadence = +inputCadence.value;
 
       // Check if data is valid
+      if ( !InputPresent(distance, duration, cadence) ) 
+      return alert('Provide valid inputs in given fields!')
+
       if ( !validInputs(distance, duration, cadence) || !allPositive(distance, duration, cadence) )
       return alert('Input have to be positive numbers!');
 
-      workout = new Running([lat, lng], distance, duration, cadence);
+     workout = new Running([lat, lng], distance, duration, cadence);
     }
 
     // If workout is cycling, create cycling object
     if (type === 'cycling') {
       const elevation = +inputElevation.value;
+
+      if ( !InputPresent(distance, duration, elevation) ) 
+      return alert('Provide valid inputs in given fields!')
 
       if (!validInputs(distance, duration, elevation) || !allPositive(distance, duration))
       return alert('Input have to be positive numbers!');
@@ -194,7 +203,6 @@ class App {
 
     // Set local storage to all workouts;
     this._setLocalStorage();
-
   }
 
   _renderWorkoutMarker(workout) {
@@ -215,6 +223,7 @@ class App {
 
   _renderWorkout(workout) {
     let html = `
+    <div class="eedit">Edit</div>
     <li class="workout workout--${workout.type}" data-id="${workout.id}">
     <h2 class="workout__title">${workout.description}</h2>
     <div class="workout__details">
@@ -263,6 +272,10 @@ class App {
     form.insertAdjacentHTML('afterend', html);
   }
 
+  _editWorkout () {
+    console.log('Succesfully CLicked');
+  }
+
   _moveToPopup(e) {
     const workoutEl = e.target.closest('.workout');
 
@@ -309,12 +322,12 @@ class App {
 const app = new App();
 
 // Additional Feature Ideas: Challenges
-// 2. Ability to edit a workout.                               🤜
-// 1. Ability to delete all workouts.                          🤜  ✔ 
-// 6. More realistic error and confirmation messages;          🤜
-// 7. Ability to position the map to show all workouts (hard)  🤜
-// 9. Geocode location from coordinates('Run in Faro, Portugal') (only after asyn js section ) 🤜
-// 10. Display weather data for workout time and place (only afte asyn js section) 🤜
+// @. Ability to edit a workout.                               🤜  it is grunts 🤦‍♂️
+// @. Ability to delete all workouts.                          🤜  ✔ 
+// @. More realistic error and confirmation messages;          🤜  ✔
+// @. Ability to position the map to show all workouts (hard)  🤜
+// @. Geocode location from coordinates('Run in Faro, Portugal') (only after asyn js section ) 🤜
+// @. Display weather data for workout time and place (only afte asyn js section) 🤜
 
 // Add backend to this app using node.js, express.js and add all data into mongodb database(if possible).
 // Use all the information for backend development from node.js course
