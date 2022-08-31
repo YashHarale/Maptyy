@@ -1,0 +1,28 @@
+{
+  "name": "mapty-app",
+  "version": "1.0.0",
+  "description": "",
+  "default": "index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "targets": {
+    "main": false
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashHarale/Maptyy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YashHarale/Maptyy/issues"
+  },
+  "homepage": "https://github.com/YashHarale/Maptyy#readme",
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  }
+}
