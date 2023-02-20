@@ -322,7 +322,7 @@ class App {
 const app = new App();
 
 // Additional Feature Ideas:
-// @. Ability to edit a workout.                               🤜  it is grunts 🤦‍♂️
+// @. Ability to edit a workout.                               🤜 
 // @. Ability to delete all workouts.                          🤜  ✔ 
 // @. More realistic error and confirmation messages;          🤜  ✔
 // @. Geocode location from coordinates('Run in Faro, Portugal')🤜
