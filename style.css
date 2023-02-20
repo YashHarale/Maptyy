@@ -172,9 +172,9 @@ a:visited {
 }
 
 .copyright {
-  margin-top: 12px;
+  margin-top: 23px;
   font-size: 1.3rem;
-  text-align: center;
+  text-align:right;
   color: var(--color-light--1);
 }
 
@@ -182,7 +182,7 @@ a:visited {
 .twitter-link:visited {
   color: var(--color-light--1);
   transition: all 0.2s;
-  font-size: 8px;
+  font-size: 12px;
 }
 
 .twitter-link:hover,
@@ -224,8 +224,10 @@ a:visited {
 
 .del{
   width: 20px;
-  position: absolute;
-  margin: 12px; 
+  position:absolute;
+  margin: 22px; 
+  /* margin-left: 92px; */
+  
   cursor: pointer;
 }
 
@@ -283,15 +285,15 @@ a:visited {
   }
 
   .del {
-    width: 12px;
+    width: 20px;
     margin-left: 270px;
     margin-top: 24px;
   }
 
   .copyright {
     margin-top: 16px;
-    font-size: 1.3rem;
-    text-align: center;
+    font-size: 2.3rem;
+    text-align: left;
     color: var(--color-light--1);
   }
 
