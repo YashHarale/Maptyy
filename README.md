@@ -4,6 +4,7 @@
 Maptyy is an javascript project using which we can mark our workouts (mainly running and cycling) on the map and thereby store our workouts in local storage.
 It interacts with leaflet library and thereby display maps.
 This app is created with the help of tools such as Parcel (for bundling), NPM(as package manager), Vanilla javascript, Html and Css.
+It is deployed on netlify with continous integration.
 
 
 
