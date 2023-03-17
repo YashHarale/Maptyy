@@ -277,12 +277,14 @@ a:visited {
   .sidebar{
     flex-basis: 50rem;
     width: fit-content;
-    height: 30%;
+    height: 44%;
     background-color: var(--color-dark--1);
     padding: 3rem 5rem 4rem 5rem;
     display: flex;
-    /* flex-direction:; */
+    flex-direction:column;
   }
+
+
 
   .del {
     width: 20px;
@@ -298,8 +300,8 @@ a:visited {
   }
 
   #map {
-    position: absolute;
-    /* height: 50%; */
+    position: relative;
+    height: 90%;
     background-color: var(--color-light--1);
   }
 
