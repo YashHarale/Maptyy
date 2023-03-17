@@ -274,6 +274,7 @@ class App {
 
   _editWorkout () {
     console.log('Succesfully CLicked');
+    // Going to work on it soon!😇
   }
 
   _moveToPopup(e) {
