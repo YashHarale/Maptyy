@@ -277,7 +277,7 @@ a:visited {
   .sidebar{
     flex-basis: 50rem;
     width: fit-content;
-    height: 40%;
+    height: 30%;
     background-color: var(--color-dark--1);
     padding: 3rem 5rem 4rem 5rem;
     display: flex;

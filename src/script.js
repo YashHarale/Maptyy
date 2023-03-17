@@ -328,7 +328,7 @@ const app = new App();
 // @. More realistic error and confirmation messages;          🤜  ✔
 // @. Geocode location from coordinates('Run in Faro, Portugal')🤜
 // @. Display weather data for workout time and place (asyn js) 🤜
-// @. Make website responsive
+// @. Make website responsive 👊 ✔
 
 // Add backend to this app using node.js, express.js and add all data into mongodb database.
 
