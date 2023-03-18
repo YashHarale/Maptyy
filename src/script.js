@@ -70,7 +70,7 @@ const editWorkout = document.querySelector('.edit');
 
 class App {
   #map;
-  #mapZoomLevel = 13;
+  #mapZoomLevel = 12;
   #mapEvent;
   #workouts = [];
 
@@ -102,12 +102,11 @@ class App {
   _loadMap(position) {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
-    console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
+//console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
 
     const coords = [latitude, longitude];
 
     this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
-    //   console.log(map);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
@@ -273,8 +272,8 @@ class App {
   }
 
   _editWorkout () {
-    console.log('Succesfully CLicked');
     // Going to work on it soon!😇
+    console.log('Succesfully CLicked');
   }
 
   _moveToPopup(e) {
