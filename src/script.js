@@ -54,6 +54,10 @@ class Cycling extends Workout {
   }
 }
 
+class Skipping extends Workout {
+  
+}
+
 // ---------------------------------APPLICATION ARCHITECTURE---------------------------------
 
 const form = document.querySelector('.form');
