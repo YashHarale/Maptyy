@@ -57,16 +57,17 @@ class Cycling extends Workout {
 class Skipping extends Workout {
   type = 'skipping';
 
-  constructor(coords, distance, duration, elevationGain) {
-    super(coords, distance, duration);
-    this.elevationGain = elevationGain;
+  constructor(coords,  duration, intensity) {
+    super(coords, duration, intensity);
+    this.duration = duration;
+    // this.intensity = intensity;
     this.calcSpeed();
     this._setDescription();
   }
 
   calcSpeed() {
     // km/h
-    this.speed = this.distance / (this.duration / 60);
+    this.speed = this.intensity / (this.duration / 60);
     return this.speed;
   }
 }
