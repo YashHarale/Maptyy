@@ -81,6 +81,7 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
+const inputIntensity = document.querySelector('.form__input--elevation');
 
 const para = document.querySelector('.para')
 const deleteIcon = document.querySelector('.del');
