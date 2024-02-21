@@ -291,7 +291,7 @@ class App {
   }
 
   _editWorkout () {
-    // Going to work on it soon!😇
+    // Going to work on it soon!
     console.log('Succesfully CLicked');
   }
 
