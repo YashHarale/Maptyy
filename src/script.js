@@ -105,7 +105,7 @@ class App {
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
     deleteIcon.addEventListener('click', this._deleteAllWorkouts.bind(this));
-    // editWorkout.addEventListener('click', this._editWorkout);
+  
   }
 
   _getPosition() {
