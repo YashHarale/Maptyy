@@ -209,7 +209,7 @@ class App {
 
     // If workout is skipping, create skipping object
     if (type  === 'skipping') {
-      const cadence = +inputCadence.value;
+      // const intensity = +inputIntensity.value;
 
       // Check if data is valid
       if ( !InputPresent(coords,  duration, intensity) ) 
@@ -218,7 +218,7 @@ class App {
       if ( !validInputs(coords,  duration, intensity) || !allPositive(distance, duration, cadence) )
       return alert('Input have to be positive numbers!');
 
-     workout = new Skipping([lat, lng], distance, duration, cadence);
+     workout = new Skipping([lat, lng],coords,  duration, intensity);
     }
 
 
