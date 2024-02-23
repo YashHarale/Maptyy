@@ -207,6 +207,21 @@ class App {
       workout = new Cycling([lat, lng], distance, duration, elevation);
     }
 
+    // If workout is skipping, create skipping object
+    if (type  === 'skipping') {
+      const cadence = +inputCadence.value;
+
+      // Check if data is valid
+      if ( !InputPresent(coords,  duration, intensity) ) 
+      return alert('Provide valid inputs in given fields!')
+
+      if ( !validInputs(coords,  duration, intensity) || !allPositive(distance, duration, cadence) )
+      return alert('Input have to be positive numbers!');
+
+     workout = new Skipping([lat, lng], distance, duration, cadence);
+    }
+
+
     // Add new object to workout array
     this.#workouts.push(workout);
 
