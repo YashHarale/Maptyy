@@ -86,6 +86,7 @@ const inputIntensity = document.querySelector('.form__input--elevation'); //Chan
 const para = document.querySelector('.para')
 const deleteIcon = document.querySelector('.del');
 const editWorkout = document.querySelector('.edit');
+let deleteSingleWorkout;
 
 class App {
   #map;
