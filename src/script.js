@@ -352,7 +352,11 @@ class App {
     localStorage.removeItem('workouts');
     location.reload();
   }
-}
+
+  _deleteSingleWorkout ()
+  {
+    //Going to work on it eventually
+  }
 
 const app = new App();
 
