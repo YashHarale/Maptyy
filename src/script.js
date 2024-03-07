@@ -356,6 +356,7 @@ class App {
   _deleteSingleWorkout ()
   {
     //Going to work on it eventually
+    const data = JSON.parse(localStorage.getItem('workouts'));
   }
 
 const app = new App();
