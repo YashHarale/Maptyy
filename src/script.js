@@ -106,6 +106,7 @@ class App {
 
     const coords = [latitude, longitude];
     console.log(coords)
+    console.log("hello world")
 
     this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
     //   console.log(map);
