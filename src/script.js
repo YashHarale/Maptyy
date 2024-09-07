@@ -54,6 +54,24 @@ class Cycling extends Workout {
   }
 }
 
+class Skipping extends Workout {
+  type = 'skipping';
+
+  constructor(coords,  duration, intensity) {
+    super(coords, duration, intensity);
+    this.duration = duration;
+    // this.intensity = intensity;
+    this.calcSpeed();
+    this._setDescription();
+  }
+
+  calcSpeed() {
+    // km/h
+    this.speed = this.intensity / (this.duration / 60);
+    return this.speed;
+  }
+}
+
 // ---------------------------------APPLICATION ARCHITECTURE---------------------------------
 
 const form = document.querySelector('.form');
@@ -63,14 +81,16 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
+const inputIntensity = document.querySelector('.form__input--elevation'); //Change querySelector
 
 const para = document.querySelector('.para')
 const deleteIcon = document.querySelector('.del');
 const editWorkout = document.querySelector('.edit');
+let deleteSingleWorkout;
 
 class App {
   #map;
-  #mapZoomLevel = 13;
+  #mapZoomLevel = 12;
   #mapEvent;
   #workouts = [];
 
@@ -86,7 +106,7 @@ class App {
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
     deleteIcon.addEventListener('click', this._deleteAllWorkouts.bind(this));
-    // editWorkout.addEventListener('click', this._editWorkout);
+  
   }
 
   _getPosition() {
@@ -102,13 +122,12 @@ class App {
   _loadMap(position) {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
-    console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
+//console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
 
     const coords = [latitude, longitude];
     console.log(coords);
 
     this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
-    //   console.log(map);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
@@ -189,6 +208,21 @@ class App {
 
       workout = new Cycling([lat, lng], distance, duration, elevation);
     }
+
+    // If workout is skipping, create skipping object
+    if (type  === 'skipping') {
+      // const intensity = +inputIntensity.value;
+
+      // Check if data is valid
+      if ( !InputPresent(coords,  duration, intensity) ) 
+      return alert('Provide valid inputs in given fields!')
+
+      if ( !validInputs(coords,  duration, intensity) || !allPositive(distance, duration, cadence) )
+      return alert('Input have to be positive numbers!');
+
+     workout = new Skipping([lat, lng],coords,  duration, intensity);
+    }
+
 
     // Add new object to workout array
     this.#workouts.push(workout);
@@ -274,8 +308,8 @@ class App {
   }
 
   _editWorkout () {
+    // Going to work on it soon!
     console.log('Succesfully CLicked');
-    // Going to work on it soon!😇
   }
 
   _moveToPopup(e) {
@@ -319,7 +353,12 @@ class App {
     localStorage.removeItem('workouts');
     location.reload();
   }
-}
+
+  _deleteSingleWorkout ()
+  {
+    //Going to work on it eventually
+    const data = JSON.parse(localStorage.getItem('workouts'));
+  }
 
 const app = new App();
 
